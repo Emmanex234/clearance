@@ -6,14 +6,27 @@
     <title>FUTO Online Clearance System - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-gray-100">
     <div class="min-h-screen flex flex-col items-center justify-center p-4">
         <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
             <div class="text-center mb-8">
-                <img src="https://th.bing.com/th/id/OIP.eaFPKtgSovE195_s8ZCgJwAAAA?rs=1&pid=ImgDetMain" alt="FUTO Logo" class="h-20 mx-auto mb-4">
+                <img src="https://futo.edu.ng/wp-content/uploads/2020/10/cropped-FUTO-LOGO.png" alt="FUTO Logo" class="h-20 mx-auto mb-4">
                 <h1 class="text-2xl font-bold text-gray-800">FUTO Online Clearance System</h1>
                 <p class="text-gray-600 mt-2">Final Year Students Portal</p>
+            </div>
+            
+            <!-- Error/Success Messages -->
+            <div id="messageContainer" class="mb-4 hidden">
+                <div id="errorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 hidden">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <span id="errorText"></span>
+                </div>
+                <div id="successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 hidden">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span id="successText"></span>
+                </div>
             </div>
             
             <form id="loginForm" class="space-y-6">
@@ -49,17 +62,84 @@
                     </div>
                     
                     <div class="text-sm">
-                        <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Forgot password?</a>
+                        <a href="#" id="forgotPasswordLink" class="font-medium text-blue-600 hover:text-blue-500">Forgot password?</a>
                     </div>
                 </div>
                 
                 <div>
-                    <button type="submit"
-                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <button type="submit" id="loginButton"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
                         Log In
                     </button>
                 </div>
             </form>
+            
+            <!-- Additional Options -->
+            <div class="mt-6 space-y-4">
+                <div class="text-center">
+                    <button id="signupToggle" class="text-sm text-blue-600 hover:text-blue-500">
+                        Don't have an account? Sign up
+                    </button>
+                </div>
+                
+                <!-- Password Reset Form (Hidden by default) -->
+                <div id="resetPasswordForm" class="hidden border-t pt-4">
+                    <h3 class="text-lg font-medium text-gray-800 mb-4">Reset Password</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="resetEmail" class="block text-sm font-medium text-gray-700">Enter your email</label>
+                            <input type="email" id="resetEmail" required
+                                class="mt-1 py-2 px-3 block w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="your.email@futo.edu.ng">
+                        </div>
+                        <div class="flex space-x-3">
+                            <button type="button" id="sendResetButton"
+                                class="flex-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                Send Reset Link
+                            </button>
+                            <button type="button" id="cancelResetButton"
+                                class="flex-1 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sign Up Form (Hidden by default) -->
+                <div id="signupForm" class="hidden border-t pt-4">
+                    <h3 class="text-lg font-medium text-gray-800 mb-4">Create Account</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="signupEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="signupEmail" required
+                                class="mt-1 py-2 px-3 block w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="your.email@futo.edu.ng">
+                        </div>
+                        <div>
+                            <label for="signupPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="signupPassword" required
+                                class="mt-1 py-2 px-3 block w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="••••••••">
+                        </div>
+                        <div>
+                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                            <input type="password" id="confirmPassword" required
+                                class="mt-1 py-2 px-3 block w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="••••••••">
+                        </div>
+                        <div class="flex space-x-3">
+                            <button type="button" id="createAccountButton"
+                                class="flex-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                Create Account
+                            </button>
+                            <button type="button" id="cancelSignupButton"
+                                class="flex-1 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="mt-6 text-center text-sm text-gray-600">
                 Need help? Contact <a href="mailto:ictsupport@futo.edu.ng" class="text-blue-600">ICT Support</a>
@@ -68,38 +148,278 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        // Supabase Configuration
+        // Replace these with your actual Supabase project credentials
+        const SUPABASE_URL = 'https://uaqesvcspzpbllvnhmzm.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhcWVzdmNzcHpwYmxsdm5obXptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NjQ3NjYsImV4cCI6MjA2NDU0MDc2Nn0.EH5w9wz-3GUembevp6Y6hdPWOk04WlKP56py-JK4NF0';
+        
+        // Initialize Supabase client
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // DOM Elements
+        const loginForm = document.getElementById('loginForm');
+        const loginButton = document.getElementById('loginButton');
+        const messageContainer = document.getElementById('messageContainer');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const errorText = document.getElementById('errorText');
+        const successText = document.getElementById('successText');
+        
+        // Form toggles
+        const signupToggle = document.getElementById('signupToggle');
+        const signupForm = document.getElementById('signupForm');
+        const resetPasswordForm = document.getElementById('resetPasswordForm');
+        const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        
+        // Utility Functions
+        function showError(message) {
+            messageContainer.classList.remove('hidden');
+            errorMessage.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+            errorText.textContent = message;
+        }
+        
+        function showSuccess(message) {
+            messageContainer.classList.remove('hidden');
+            successMessage.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+            successText.textContent = message;
+        }
+        
+        function hideMessages() {
+            messageContainer.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            successMessage.classList.add('hidden');
+        }
+        
+        function setLoading(button, isLoading, loadingText = 'Loading...') {
+            if (isLoading) {
+                button.disabled = true;
+                button.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i> ${loadingText}`;
+            } else {
+                button.disabled = false;
+                button.innerHTML = button.dataset.originalText || 'Submit';
+            }
+        }
+        
+        // Check if user is already logged in
+        async function checkAuthState() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                // User is already logged in, redirect to dashboard
+                window.location.href = 'student.html';
+            }
+        }
+        
+        // Login Function
+        async function handleLogin(email, password) {
+            try {
+                setLoading(loginButton, true, 'Logging in...');
+                hideMessages();
+                
+                const { data, error } = await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+                
+                if (error) {
+                    throw error;
+                }
+                
+                if (data.user) {
+                    showSuccess('Login successful! Redirecting...');
+                    
+                    // Store session info if "Remember me" is checked
+                    const rememberMe = document.getElementById('remember-me').checked;
+                    if (rememberMe) {
+                        localStorage.setItem('futo_remember_user', 'true');
+                    }
+                    
+                    // Redirect to student page after successful login
+                    setTimeout(() => {
+                        window.location.href = 'student.html';
+                    }, 1500);
+                }
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                let errorMessage = 'Login failed. Please try again.';
+                
+                // Handle specific error types
+                if (error.message.includes('Invalid login credentials')) {
+                    errorMessage = 'Invalid email or password. Please check your credentials.';
+                } else if (error.message.includes('Email not confirmed')) {
+                    errorMessage = 'Please check your email and confirm your account before logging in.';
+                } else if (error.message.includes('Too many requests')) {
+                    errorMessage = 'Too many login attempts. Please wait a moment and try again.';
+                }
+                
+                showError(errorMessage);
+            } finally {
+                setLoading(loginButton, false);
+            }
+        }
+        
+        // Sign Up Function
+        async function handleSignUp(email, password) {
+            try {
+                const createButton = document.getElementById('createAccountButton');
+                if (!createButton.dataset.originalText) {
+                    createButton.dataset.originalText = createButton.innerHTML;
+                }
+                setLoading(createButton, true, 'Creating account...');
+                hideMessages();
+                
+                const { data, error } = await supabaseClient.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        emailRedirectTo: window.location.origin + '/student.html'
+                    }
+                });
+                
+                if (error) {
+                    throw error;
+                }
+                
+                showSuccess('Account created! Please check your email to confirm your account.');
+                
+                // Hide signup form and show login form
+                setTimeout(() => {
+                    toggleSignupForm();
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Signup error:', error);
+                let errorMessage = 'Failed to create account. Please try again.';
+                
+                if (error.message.includes('User already registered')) {
+                    errorMessage = 'An account with this email already exists. Please login instead.';
+                } else if (error.message.includes('Password')) {
+                    errorMessage = 'Password must be at least 6 characters long.';
+                }
+                
+                showError(errorMessage);
+            } finally {
+                const createButton = document.getElementById('createAccountButton');
+                setLoading(createButton, false);
+            }
+        }
+        
+        // Password Reset Function
+        async function handlePasswordReset(email) {
+            try {
+                const resetButton = document.getElementById('sendResetButton');
+                if (!resetButton.dataset.originalText) {
+                    resetButton.dataset.originalText = resetButton.innerHTML;
+                }
+                setLoading(resetButton, true, 'Sending...');
+                hideMessages();
+                
+                const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+                    redirectTo: window.location.origin + '/reset-password.html'
+                });
+                
+                if (error) {
+                    throw error;
+                }
+                
+                showSuccess('Password reset link sent to your email!');
+                
+                // Hide reset form
+                setTimeout(() => {
+                    toggleResetForm();
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Password reset error:', error);
+                showError('Failed to send reset link. Please check your email and try again.');
+            } finally {
+                const resetButton = document.getElementById('sendResetButton');
+                setLoading(resetButton, false);
+            }
+        }
+        
+        // Form Toggle Functions
+        function toggleSignupForm() {
+            const isHidden = signupForm.classList.contains('hidden');
+            signupForm.classList.toggle('hidden');
+            resetPasswordForm.classList.add('hidden');
+            
+            signupToggle.textContent = isHidden ? 
+                'Already have an account? Log in' : 
+                'Don\'t have an account? Sign up';
+            
+            hideMessages();
+        }
+        
+        function toggleResetForm() {
+            resetPasswordForm.classList.toggle('hidden');
+            signupForm.classList.add('hidden');
+            hideMessages();
+        }
+        
+        // Event Listeners
+        loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            try {
-                // Simulate API call
-                console.log('Attempting login with:', { email, password });
-                
-                // In a real app, you would call your authentication API here
-                // const response = await fetch('/api/auth/login', {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify({ email, password })
-                // });
-                
-                // For demo purposes, redirect after 1 second
-                setTimeout(() => {
-                    window.location.href = 'student.html';
-                }, 1000);
-                
-                // Show loading state
-                const button = e.target.querySelector('button[type="submit"]');
-                button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Logging in...';
-                button.disabled = true;
-                
-            } catch (error) {
-                console.error('Login error:', error);
-                alert('Login failed. Please check your credentials and try again.');
-            }
+            await handleLogin(email, password);
         });
+        
+        // Sign up form handling
+        document.getElementById('createAccountButton').addEventListener('click', async function() {
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (!email || !password || !confirmPassword) {
+                showError('Please fill in all fields.');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showError('Passwords do not match.');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showError('Password must be at least 6 characters long.');
+                return;
+            }
+            
+            await handleSignUp(email, password);
+        });
+        
+        // Password reset handling
+        document.getElementById('sendResetButton').addEventListener('click', async function() {
+            const email = document.getElementById('resetEmail').value;
+            
+            if (!email) {
+                showError('Please enter your email address.');
+                return;
+            }
+            
+            await handlePasswordReset(email);
+        });
+        
+        // Toggle buttons
+        signupToggle.addEventListener('click', toggleSignupForm);
+        forgotPasswordLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleResetForm();
+        });
+        
+        document.getElementById('cancelSignupButton').addEventListener('click', toggleSignupForm);
+        document.getElementById('cancelResetButton').addEventListener('click', toggleResetForm);
+        
+        // Initialize
+        checkAuthState();
+        
+        // Store original button text
+        loginButton.dataset.originalText = loginButton.innerHTML;
     </script>
 </body>
 </html>
