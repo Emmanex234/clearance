@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTO Clearance - Status</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation (same as dashboard) -->
+    <nav class="bg-blue-800 text-white shadow-lg">
+        <!-- ... same navigation as dashboard ... -->
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Sidebar (same as dashboard) -->
+            <div class="w-full md:w-64 flex-shrink-0">
+                <!-- ... same sidebar as dashboard ... -->
+            </div>
+
+            <!-- Status Content -->
+            <div class="flex-1">
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h2 class="text-xl font-semibold text-gray-800">Clearance Status</h2>
+                        <p class="text-sm text-gray-500 mt-1">Track your clearance progress across all departments</p>
+                    </div>
+                    <div class="p-6">
+                        <!-- Progress Summary -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-medium text-gray-800 mb-4">Overall Progress</h3>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-700">Completion Status</span>
+                                    <span class="text-sm font-medium text-blue-600">60% complete</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 60%"></div>
+                                </div>
+                                <div class="flex justify-between mt-2 text-xs text-gray-500">
+                                    <span>0%</span>
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status Table -->
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-4">Department Status</h3>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unit</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Updated</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                                        <i class="fas fa-book"></i>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">Library</div>
+                                                        <div class="text-sm text-gray-500">School Library</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                    Pending
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                2 days ago
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="upload-documents.html" class="text-blue-600 hover:text-blue-900">Upload Docs</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                                        <i class="fas fa-money-bill-wave"></i>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">Bursary</div>
+                                                        <div class="text-sm text-gray-500">Finance Department</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                    Approved
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                Yesterday, 10:24 AM
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="#" class="text-blue-600 hover:text-blue-900">View Details</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                                        <i class="fas fa-building"></i>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">Department</div>
+                                                        <div class="text-sm text-gray-500">Computer Science</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                    Approved
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                3 days ago
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="#" class="text-blue-600 hover:text-blue-900">View Details</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+                                                        <i class="fas fa-bed"></i>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">Hostel</div>
+                                                        <div class="text-sm text-gray-500">Student Affairs</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                    Pending
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                1 week ago
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="upload-documents.html" class="text-blue-600 hover:text-blue-900">Upload Docs</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                                                        <i class="fas fa-user-graduate"></i>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">Faculty</div>
+                                                        <div class="text-sm text-gray-500">School of Computing</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                                    Not Started
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                --
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="#" class="text-gray-400 cursor-not-allowed">Not Available</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Final Clearance -->
+                        <div class="mt-8 border-t border-gray-200 pt-6">
+                            <h3 class="text-lg font-medium text-gray-800 mb-4">Final Clearance</h3>
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-info-circle text-blue-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-blue-700">
+                                            <span class="font-medium">Note:</span> You must complete all departmental clearances before you can apply for final clearance. 
+                                            Once all statuses show "Approved", the "Request Final Clearance" button will be enabled.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex justify-end">
+                                <button id="finalClearanceBtn" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-500 cursor-not-allowed" disabled>
+                                    <i class="fas fa-file-certificate mr-2"></i> Request Final Clearance
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate loading clearance status data
+            const clearanceData = [
+                { unit: "Library", status: "pending", lastUpdated: "2 days ago", icon: "book", color: "yellow" },
+                { unit: "Bursary", status: "approved", lastUpdated: "Yesterday, 10:24 AM", icon: "money-bill-wave", color: "green" },
+                { unit: "Department", status: "approved", lastUpdated: "3 days ago", icon: "building", color: "green" },
+                { unit: "Hostel", status: "pending", lastUpdated: "1 week ago", icon: "bed", color: "yellow" },
+                { unit: "Faculty", status: "not-started", lastUpdated: "--", icon: "user-graduate", color: "gray" }
+            ];
+            
+            // In a real app, you would fetch this from your API and render dynamically
+            // For now, we're using static HTML with this data structure
+            
+            // Check if all clearances are approved to enable final clearance button
+            const allApproved = clearanceData.filter(item => item.status !== 'approved').length === 0;
+            const finalBtn = document.getElementById('finalClearanceBtn');
+            
+            if (allApproved && finalBtn) {
+                finalBtn.classList.remove('bg-gray-500', 'cursor-not-allowed');
+                finalBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                finalBtn.disabled = false;
+                
+                finalBtn.addEventListener('click', function() {
+                    // Show loading state
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+                    this.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                        alert('Final clearance request submitted successfully! You will be notified when processed.');
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

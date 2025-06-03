@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTO Clearance - Upload Documents</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation (same as dashboard) -->
+    <nav class="bg-blue-800 text-white shadow-lg">
+        <!-- ... same navigation as dashboard ... -->
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Sidebar (same as dashboard) -->
+            <div class="w-full md:w-64 flex-shrink-0">
+                <!-- ... same sidebar as dashboard ... -->
+            </div>
+
+            <!-- Upload Content -->
+            <div class="flex-1">
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-xl font-semibold text-gray-800">Upload Documents</h2>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                                <i class="fas fa-info-circle mr-1"></i> 2 pending uploads
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <!-- Upload Instructions -->
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-info-circle text-blue-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-blue-700">
+                                        Upload clear scanned copies of your documents in PDF or JPG format (max 2MB each).
+                                        Ensure documents are legible before submission.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upload Forms -->
+                        <div class="space-y-8">
+                            <!-- Library Clearance -->
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-800">Library Clearance</h3>
+                                        <p class="text-sm text-gray-500">Submit your library clearance form</p>
+                                    </div>
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 mt-2 md:mt-0">
+                                        Pending
+                                    </span>
+                                </div>
+                                
+                                <form class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Document Type</label>
+                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                            <option>Library Clearance Form</option>
+                                            <option>No Dues Certificate</option>
+                                            <option>Other Library Document</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Upload File</label>
+                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                            <div class="space-y-1 text-center">
+                                                <div class="flex text-sm text-gray-600">
+                                                    <label for="library-file" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                                        <span>Upload a file</span>
+                                                        <input id="library-file" name="library-file" type="file" class="sr-only" accept=".pdf,.jpg,.jpeg,.png">
+                                                    </label>
+                                                    <p class="pl-1">or drag and drop</p>
+                                                </div>
+                                                <p class="text-xs text-gray-500">PDF, JPG, PNG up to 2MB</p>
+                                            </div>
+                                        </div>
+                                        <div id="library-file-name" class="text-sm text-gray-500 mt-1 hidden">
+                                            Selected file: <span class="font-medium"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex justify-end">
+                                        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                            <i class="fas fa-upload mr-2"></i> Upload Document
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Department Clearance -->
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-800">Department Clearance</h3>
+                                        <p class="text-sm text-gray-500">Submit your department clearance form</p>
+                                    </div>
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 mt-2 md:mt-0">
+                                        Approved
+                                    </span>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-4 rounded-md">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-gray-700">
+                                                Your department clearance has already been approved. No further action required.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hostel Clearance -->
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-800">Hostel Clearance</h3>
+                                        <p class="text-sm text-gray-500">Submit your hostel clearance form</p>
+                                    </div>
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 mt-2 md:mt-0">
+                                        Pending
+                                    </span>
+                                </div>
+                                
+                                <form class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Document Type</label>
+                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                            <option>Hostel Clearance Form</option>
+                                            <option>No Dues Certificate</option>
+                                            <option>Other Hostel Document</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Upload File</label>
+                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                            <div class="space-y-1 text-center">
+                                                <div class="flex text-sm text-gray-600">
+                                                    <label for="hostel-file" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                                        <span>Upload a file</span>
+                                                        <input id="hostel-file" name="hostel-file" type="file" class="sr-only" accept=".pdf,.jpg,.jpeg,.png">
+                                                    </label>
+                                                    <p class="pl-1">or drag and drop</p>
+                                                </div>
+                                                <p class="text-xs text-gray-500">PDF, JPG, PNG up to 2MB</p>
+                                            </div>
+                                        </div>
+                                        <div id="hostel-file-name" class="text-sm text-gray-500 mt-1 hidden">
+                                            Selected file: <span class="font-medium"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex justify-end">
+                                        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                            <i class="fas fa-upload mr-2"></i> Upload Document
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle file input changes
+            function setupFileInput(inputId, displayId) {
+                const fileInput = document.getElementById(inputId);
+                const fileNameDisplay = document.getElementById(displayId);
+                
+                if (fileInput && fileNameDisplay) {
+                    fileInput.addEventListener('change', function(e) {
+                        if (this.files && this.files.length > 0) {
+                            fileNameDisplay.querySelector('span').textContent = this.files[0].name;
+                            fileNameDisplay.classList.remove('hidden');
+                            
+                            // Validate file size (2MB max)
+                            if (this.files[0].size > 2 * 1024 * 1024) {
+                                alert('File size exceeds 2MB limit. Please choose a smaller file.');
+                                this.value = '';
+                                fileNameDisplay.classList.add('hidden');
+                            }
+                            
+                            // Validate file type
+                            const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+                            if (!validTypes.includes(this.files[0].type)) {
+                                alert('Only PDF, JPG, and PNG files are allowed.');
+                                this.value = '';
+                                fileNameDisplay.classList.add('hidden');
+                            }
+                        } else {
+                            fileNameDisplay.classList.add('hidden');
+                        }
+                    });
+                }
+            }
+            
+            // Setup all file inputs
+            setupFileInput('library-file', 'library-file-name');
+            setupFileInput('hostel-file', 'hostel-file-name');
+            
+            // Simulate form submission
+            const uploadButtons = document.querySelectorAll('button[type="button"]');
+            uploadButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const form = this.closest('form');
+                    if (form) {
+                        const fileInput = form.querySelector('input[type="file"]');
+                        if (fileInput && !fileInput.files.length) {
+                            alert('Please select a file to upload.');
+                            return;
+                        }
+                        
+                        // Show loading state
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Uploading...';
+                        this.disabled = true;
+                        
+                        // Simulate upload delay
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.disabled = false;
+                            alert('Document uploaded successfully!');
+                        }, 1500);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
